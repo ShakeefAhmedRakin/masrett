@@ -73,7 +73,9 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <h1 className="font-bold text-2xl">MASRETT</h1>
+          <button className="font-bold text-2xl" onClick={() => navigate("/")}>
+            MASRETT
+          </button>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-4 text-white px-1">{links}</ul>

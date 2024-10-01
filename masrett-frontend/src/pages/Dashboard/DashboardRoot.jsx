@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import useCheckAdminRole from "../../hooks/useCheckAdminRole";
+import useAuth from "../../hooks/useAuth";
 
 const DashboardRoot = () => {
   const closeSidebar = () => {
@@ -12,6 +13,7 @@ const DashboardRoot = () => {
   };
 
   const { isAdmin } = useCheckAdminRole();
+  const { logOut } = useAuth();
 
   const location = useLocation();
 
@@ -88,10 +90,10 @@ const DashboardRoot = () => {
               <li className="">MCQ</li>
             </NavLink>
             <NavLink
-              to={"/sandbox"}
+              to={"/dashboard/sandbox"}
               onClick={closeSidebar}
               className={`p-2 w-full border-2 text-white hover:border-white border-transparent rounded-xl ${
-                location.pathname === "/sandbox"
+                location.pathname === "/dashboard/sandbox"
                   ? "text-white font-bold border-white"
                   : ""
               } `}
@@ -126,6 +128,12 @@ const DashboardRoot = () => {
                 </NavLink>
               </>
             )}
+            <button
+              className="btn bg-red-500 text-white border-none rounded-none hover:bg-red-600"
+              onClick={() => logOut()}
+            >
+              Logout
+            </button>
           </div>
         </ul>
       </div>

@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+
 const Home = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   return (
     <div className="bg-primary relative">
       <div className="container mx-auto md:px-12">
@@ -15,9 +20,21 @@ const Home = () => {
             comprehensive and accessible way to master MSL. Start your journey
             with MASRETT today and discover the joy of signing!
           </p>
-          <button className="btn bg-secondary hover:bg-secondary text-white border-none rounded mt-10 px-10">
-            Get Started
-          </button>
+          {user ? (
+            <button
+              className="btn bg-secondary hover:bg-secondary text-white border-none rounded mt-10 px-10"
+              onClick={() => navigate("/dashboard")}
+            >
+              Your Dashboard
+            </button>
+          ) : (
+            <button
+              className="btn bg-secondary hover:bg-secondary text-white border-none rounded mt-10 px-10"
+              onClick={() => navigate("/login")}
+            >
+              Get Started
+            </button>
+          )}
           <div className="flex justify-center mt-10 px-1">
             <img src="/home-pic.PNG" className="" />
           </div>

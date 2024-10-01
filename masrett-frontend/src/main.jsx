@@ -16,6 +16,8 @@ import Tutorials from "./pages/Dashboard/Tutorials/Tutorials";
 import AddExercise from "./pages/Dashboard/Admin/AddExercise";
 import Mcq from "./pages/Dashboard/Exercise/Mcq";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
+import Leaderboard from "./pages/Home/Leaderboard";
+import About from "./pages/Home/About";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/leaderboard",
+        element: <Leaderboard></Leaderboard>,
+      },
+      {
+        path: "/about",
+        element: <About></About>,
+      },
     ],
   },
   {
@@ -35,10 +45,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register></Register>,
-  },
-  {
-    path: "/sandbox",
-    element: <Sandbox></Sandbox>,
   },
   {
     path: "/dashboard",
@@ -69,6 +75,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Mcq></Mcq>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/sandbox",
+        element: (
+          <PrivateRoute>
+            <Sandbox></Sandbox>
           </PrivateRoute>
         ),
       },

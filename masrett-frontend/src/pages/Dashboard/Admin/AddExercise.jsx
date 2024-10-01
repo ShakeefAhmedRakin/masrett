@@ -79,7 +79,7 @@ const AddExercise = () => {
   return (
     <div className="p-5">
       {/* Tabs for navigation */}
-      <div className="flex justify-center mb-4 gap-2">
+      <div className="justify-center hidden mb-4 gap-2">
         <button
           onClick={() => setActiveTab("MCQ")}
           className={`btn bg-primary border-none ${
@@ -90,7 +90,7 @@ const AddExercise = () => {
         </button>
         <button
           onClick={() => setActiveTab("WIP")}
-          className={`btn bg-primary border-none ${
+          className={`btn bg-primary border-none hidden ${
             activeTab === "WIP" ? "bg-primary text-white" : "bg-gray-300"
           }`}
         >

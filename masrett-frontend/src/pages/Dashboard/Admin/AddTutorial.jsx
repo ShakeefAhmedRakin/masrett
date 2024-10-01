@@ -77,7 +77,7 @@ const AddTutorial = () => {
   }
 
   return (
-    <div className="h-[90vh] flex items-center justify-center">
+    <div className="h-[90vh]">
       <form
         className="bg-white p-6 rounded-lg shadow-md"
         onSubmit={handleSubmit}

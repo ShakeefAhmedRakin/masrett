@@ -38,6 +38,14 @@ const AuthProvider = ({ children }) => {
     });
   };
 
+  // UPDATE PROFILE PICTURE
+  const updateProfilePicture = (photoURL) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      photoURL: photoURL,
+    });
+  };
+
   const signInWithGoogle = () => {
     return signInWithPopup(auth, googleProvider);
   };
@@ -89,6 +97,7 @@ const AuthProvider = ({ children }) => {
     loading,
     createUser,
     signInUser,
+    updateProfilePicture,
     logOut,
     signInWithGoogle,
     addUsernamePhoto,

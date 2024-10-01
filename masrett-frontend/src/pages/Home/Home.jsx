@@ -30,7 +30,7 @@ const Home = () => {
           ) : (
             <button
               className="btn bg-secondary hover:bg-secondary text-white border-none rounded mt-10 px-10"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/register")}
             >
               Get Started
             </button>

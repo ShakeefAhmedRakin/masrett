@@ -1,8 +1,15 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 import { TbLayoutSidebarLeftExpandFilled } from "react-icons/tb";
 import useCheckAdminRole from "../../hooks/useCheckAdminRole";
 import useAuth from "../../hooks/useAuth";
+
+import { IoHomeOutline } from "react-icons/io5";
+import { GiGraduateCap } from "react-icons/gi";
+import { FaWpforms } from "react-icons/fa";
+import { MdOutlinePhotoCameraFront } from "react-icons/md";
+import { MdFormatListBulletedAdd } from "react-icons/md";
+import { MdNoteAdd } from "react-icons/md";
 
 const DashboardRoot = () => {
   const closeSidebar = () => {
@@ -16,6 +23,7 @@ const DashboardRoot = () => {
   const { logOut } = useAuth();
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <div className="drawer md:drawer-open h-full">
@@ -42,10 +50,13 @@ const DashboardRoot = () => {
         <ul className="menu h-full p-4 w-82 bg-primary text-base-content fixed">
           {/* Sidebar content here */}
           <div className="flex justify-between items-center gap-2">
-            <div className="text-secondary flex items-center gap-4">
-              <h1 className="font-heading text-xl md:text-2xl font-bold px-10 py-5 text-black">
+            <div className="text-secondary flex items-center my-4">
+              <button
+                className="font-heading text-xl md:text-2xl font-bold px-10 py-5 text-black"
+                onClick={() => navigate("/")}
+              >
                 MASRETT
-              </h1>
+              </button>
             </div>
             <label
               onClick={closeSidebar}
@@ -65,7 +76,11 @@ const DashboardRoot = () => {
                   : ""
               }`}
             >
-              <li className="">Home</li>
+              <li>
+                <p className="flex items-center justify-start">
+                  <IoHomeOutline className="text-2xl"></IoHomeOutline>Home
+                </p>
+              </li>
             </NavLink>
             <NavLink
               to={"/dashboard/tutorials"}
@@ -76,7 +91,11 @@ const DashboardRoot = () => {
                   : ""
               } `}
             >
-              <li className="">Tutorial</li>
+              <li className="">
+                <p className="flex items-center justify-start">
+                  <GiGraduateCap className="text-2xl"></GiGraduateCap>Tutorial
+                </p>
+              </li>
             </NavLink>
             <NavLink
               to={"/dashboard/mcq"}
@@ -87,7 +106,11 @@ const DashboardRoot = () => {
                   : ""
               } `}
             >
-              <li className="">MCQ</li>
+              <li className="">
+                <p className="flex items-center justify-start">
+                  <FaWpforms className="text-2xl"></FaWpforms>Exercise
+                </p>
+              </li>
             </NavLink>
             <NavLink
               to={"/dashboard/sandbox"}
@@ -98,7 +121,12 @@ const DashboardRoot = () => {
                   : ""
               } `}
             >
-              <li className="">Sandbox</li>
+              <li className="">
+                <p className="flex items-center justify-start">
+                  <MdOutlinePhotoCameraFront className="text-2xl"></MdOutlinePhotoCameraFront>
+                  Sandbox
+                </p>
+              </li>
             </NavLink>
 
             {isAdmin && (
@@ -113,7 +141,12 @@ const DashboardRoot = () => {
                       : ""
                   } `}
                 >
-                  <li className="">Add Tutorial</li>
+                  <li className="">
+                    <p className="flex items-center justify-start">
+                      <MdFormatListBulletedAdd className="text-2xl"></MdFormatListBulletedAdd>
+                      Add Tutorial
+                    </p>
+                  </li>
                 </NavLink>
                 <NavLink
                   to={"/dashboard/add-exercise"}
@@ -124,7 +157,12 @@ const DashboardRoot = () => {
                       : ""
                   } `}
                 >
-                  <li className="">Add Exercise</li>
+                  <li className="">
+                    <p className="flex items-center justify-start">
+                      <MdNoteAdd className="text-2xl"></MdNoteAdd>
+                      Add Exercise
+                    </p>
+                  </li>
                 </NavLink>
               </>
             )}
